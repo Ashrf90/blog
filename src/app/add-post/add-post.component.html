@@ -1,0 +1,57 @@
+<div class="container-fluid mb-5">
+    <h1>Ajouter un article</h1>
+    <form [formGroup]="addpost" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <input  [class.is-invalid]="Validate.name?.invalid && Validate.name?.touched" 
+          formControlName="name" type="text" class="form-control">
+        <div *ngIf="Validate.name?.invalid && Validate.name?.touched">
+          <small *ngIf="Validate.name?.errors?.['required']"  class="text-danger">
+            Le nom est obligatoire</small>
+          <small *ngIf="Validate.name?.errors?.['minlength']" class="text-danger">
+            Le nom devra contenir plus que 3 caracteres</small>
+        </div>
+      </div>-
+    
+      <div class="form-group">
+        <input [class.is-invalid]="Validate.email?.invalid && Validate.email?.touched" 
+        formControlName="email" type="email" class="form-control">
+        <div *ngIf="Validate.email?.invalid && Validate.email?.touched">
+          <small *ngIf="Validate.email?.errors?.['required']"  class="text-danger">
+            L'email est obligatoire</small>
+          <small *ngIf="Validate.email?.errors?.['email']" class="text-danger">
+            L'email est incorrect</small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input  [class.is-invalid]="Validate.title?.invalid && Validate.title?.touched" 
+        formControlName="title" type="text" class="form-control">
+        <small [class.d-none]="Validate.title?.valid || Validate.title?.untouched"  
+        class="text-danger">Le titre est obligatoire</small>
+      </div>
+
+      <div class="form-group">
+        <select [class.is-invalid]="Validate.topic?.invalid && Validate.topic?.touched" 
+        formControlName="topic" 
+        class="form-select">
+          <option selected>Selectionner une categorie</option>
+          <option *ngFor="let topic of topics">{{ topic }}</option>
+        </select>
+        <small class="text-danger" 
+        [class.d-none]="Validate.topic?.valid || Validate.topic?.untouched">
+        Chosir une categorie !</small>
+      </div>
+
+      <div class="form-group">
+        <textarea [class.is-invalid]="Validate.content?.invalid && Validate.content?.touched"
+         formControlName="content" formControlName="content" class="form-control" id="Textarea" 
+         rows="5" placeholder="Description"></textarea>
+        <small [class.d-none]="Validate.content?.valid || Validate.content?.untouched"  
+        class="text-danger">Le contenu est obligatoire</small>
+      </div>
+      <button [disabled]='!addpost.valid' mat-raised-button type="submit" color="primary">
+        Envoyer</button>
+
+    </form>
+    </div>

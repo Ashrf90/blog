@@ -1,0 +1,19 @@
+<div class="container">
+    <mat-card *ngFor="let item of articleData">
+        <mat-card-header>
+            <!--<div mat-card-avatar class="example-header-image"></div>-->
+            <mat-card-title>{{ item.name }}</mat-card-title>
+            <mat-card-subtitle>{{ item.title }}</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+            <p>{{ item.content }}</p>
+        </mat-card-content>
+
+        <mat-card-actions align="end">
+            <button mat-raised-button (click)="Delete(item.id)">Supprimer</button>
+            <a mat-raised-button routerLink="/update-post/{{item.id}}">Modifier</a>
+        </mat-card-actions>
+        
+    </mat-card>
+</div>

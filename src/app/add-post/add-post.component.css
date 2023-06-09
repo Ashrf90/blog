@@ -1,0 +1,14 @@
+.container-fluid{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+
+input, textarea{
+    margin: 10px 0px 10px 0px;
+    width: 1000px;
+}
+

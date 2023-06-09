@@ -1,0 +1,21 @@
+<mat-toolbar color="primary" class="navbar">
+    <div>Blog</div>
+    <div>
+        <a mat-button>Home</a>
+        
+        <a mat-button [matMenuTriggerFor]="menuArticle">Articles</a>
+        <mat-menu #menuArticle="matMenu">
+            <!--<a mat-menu-item href="#" *ngFor = 'let Article of Articles'>{{ Article }}</a>-->
+            <a mat-menu-item routerLink='list-post' >Liste des articles</a>
+            <a mat-menu-item routerLink='add-post'>Ajouter un article</a>
+        </mat-menu>
+
+        <a mat-button>About</a>
+
+        <button mat-raised-button color="accent" [matMenuTriggerFor]="menu">Sign in</button>
+        <mat-menu #menu="matMenu">
+            <a mat-menu-item href="#">Register</a>
+            <a mat-menu-item href="#">Login</a>
+        </mat-menu>
+    </div>
+</mat-toolbar>
